@@ -1,0 +1,50 @@
+
+#container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns, each takes equal space */
+  gap: 16px; /* space between cards */
+  padding: 16px; /* optional padding around grid */
+}
+
+/* format the card space as flex */
+.card {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* format the mood name at the top */
+.card h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* format the mood images to be a consistent size */
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+
+/* format the two columns at the bottom of the card */
+.card__bottom {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 12px;
+}
+
+
+.card__details, .card__quotes {
+  flex: 1;
+  min-width: 0;
+  background: #e0e0e0;  /* or #d0d0d0 for quotes */
+  padding: 8px;
+  border-radius: 4px;
+}
