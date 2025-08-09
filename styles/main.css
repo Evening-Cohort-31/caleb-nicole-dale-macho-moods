@@ -88,7 +88,7 @@ body {
 }
 
 /* Zebra/tiger stripe label for “Macho Advice” */
-.advice-label {
+.card__advice-label {
   font-family: "Bangers", Impact, Haettenschweiler, "Anton", sans-serif;
   font-size: 0.95rem;
   text-transform: uppercase;

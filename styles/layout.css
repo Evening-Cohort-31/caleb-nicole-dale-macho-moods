@@ -77,19 +77,19 @@ body {
   align-items: start;
 }
 
-.advice-label {
+.card__advice-label {
   padding: 6px 10px;
   border-radius: 999px; /* pill shape */
   white-space: nowrap;
 }
 
-.quotes-list {
+.card__quotes {
   display: grid;
   gap: 8px;
   min-width: 0;
 }
 
-.quotes-list p {
+.card__quotes p {
   margin: 0;
   word-wrap: anywhere;
 }
@@ -107,7 +107,7 @@ body {
   gap: 12px;
 }
 
-.card__bottom {
+.card__advice {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
