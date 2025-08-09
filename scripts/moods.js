@@ -3,15 +3,17 @@ export const moodCard = (moodObject) => {
 
     return `
         <div class="card" id=${id}>
-            <h3>${name}</h3>
+            <h2>${name}</h2>
             <img src=${imageUrl}>
-            <div class="card__details>
-                <article class="card__advice">${text}</article>
-                <section class="card__quotes>
-                    <p class="card__quotes__quote>${quotes[0]}</p>
-                    <p class="Card__quotes__quote>${quotes[1]}</p>
-                </section>
+            <div class="card__bottom">
+                <div class="card__details">
+                    <h3> Macho Advice: </h3>
+                    <article class="card__advice">${text}</article>
+                </div>
+                <div class="card__quotes">
+                        <p>${quotes[0]}</p>
+                        <p>${quotes[1]}</p>
+                </div>
             </div>
-        </div>
     `
 }
