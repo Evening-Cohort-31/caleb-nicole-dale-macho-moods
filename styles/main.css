@@ -1,50 +1,161 @@
+/* Loud 80s wrestling vibe: purple + gold + neon accents */
+:root {
+  --mm-bg: radial-gradient(1200px 600px at 10% -10%, #4b0082 0%, #2b0f3f 45%, #160a22 100%);
+  --mm-surface: #2a2140;
+  --mm-surface-2: #352b52;
+  --mm-card: #3b2a6b;
+  --mm-card-gloss: rgba(255,255,255,0.06);
+  --mm-text: #f7ecff;
+  --mm-muted: #cbb7ff;
 
-#container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns, each takes equal space */
-  gap: 16px; /* space between cards */
-  padding: 16px; /* optional padding around grid */
+  --mm-purple: #8e2de2;
+  --mm-gold: #ffd54a;
+  --mm-pink: #ff4fa3;
+  --mm-cyan: #31e8ff;
+  --mm-shadow: 0 10px 20px rgba(0,0,0,0.35), 0 2px 6px rgba(0,0,0,0.25);
+
+  --mm-radius: 16px;
+  --mm-border: 2px solid rgba(255,255,255,0.08);
 }
 
-/* format the card space as flex */
+/* Typography */
+body {
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--mm-text);
+  background: var(--mm-bg);
+  line-height: 1.5;
+}
+
+/* Title gets the marquee treatment */
+.header__title {
+  font-family: "Bangers", Impact, Haettenschweiler, "Anton", sans-serif;
+  font-size: clamp(2.4rem, 3.5vw + 1rem, 4.5rem);
+  letter-spacing: 1px;
+  color: var(--mm-gold);
+  text-shadow:
+    0 1px 0 #000,
+    0 3px 10px rgba(0,0,0,0.6),
+    0 0 24px rgba(255,213,74,0.45);
+  filter: drop-shadow(0 0 12px rgba(255, 213, 74, 0.25));
+}
+
+.header__prompt {
+  font-weight: 600;
+  color: var(--mm-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Card visuals */
+.card {
+  background: linear-gradient(180deg, var(--mm-card) 0%, var(--mm-surface) 100%);
+  border: var(--mm-border);
+  border-radius: var(--mm-radius);
+  box-shadow: var(--mm-shadow);
+  position: relative;
+  overflow: hidden;
+}
+.card::after {
+  /* glossy diagonal highlight */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0 35%, rgba(255,255,255,0.08) 50%, transparent 65% 100%);
+  pointer-events: none;
+}
+
+.card h2 {
+  font-family: "Bangers", Impact, Haettenschweiler, "Anton", sans-serif;
+  color: #fff;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+}
+
+/* Image frame */
+.card img {
+  border: 3px solid rgba(255,255,255,0.12);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+}
+
+/* Advice block styling */
+.card__advice {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+/* Zebra/tiger stripe label for “Macho Advice” */
+.advice-label {
+  font-family: "Bangers", Impact, Haettenschweiler, "Anton", sans-serif;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color: #1b0e2b;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      var(--mm-gold) 0 10px,
+      #000 10px 16px
+    );
+  border: 2px solid #000;
+  box-shadow: 0 3px 0 #000, 0 8px 14px rgba(0,0,0,0.35);
+}
+
+/* Quotes */
+.quotes-list p {
+  background: rgba(0,0,0,0.2);
+  border-left: 4px solid var(--mm-pink);
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--mm-text);
+}
+.quotes-list p + p {
+  border-left-color: var(--mm-cyan);
+}
+
+/* Fun hover lift */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px rgba(0,0,0,0.45);
+}
+
+/* Subtle focus ring for accessibility */
+.card:focus-within {
+  outline: 3px solid color-mix(in oklab, var(--mm-gold) 60%, white 40%);
+  outline-offset: 2px;
+}
+
+/* Optional: themed scrollbar (WebKit/Blink) */
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--mm-pink), var(--mm-purple));
+  border-radius: 999px;
+}
+
 .card {
   background: #f5f5f5;
   border-radius: 8px;
   padding: 12px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
 
-/* format the mood name at the top */
 .card h2 {
   margin: 0;
   font-size: 1.2rem;
   text-align: center;
 }
 
-/* format the mood images to be a consistent size */
 .card img {
   width: 100%;
   height: auto;
   border-radius: 6px;
 }
 
-
-/* format the two columns at the bottom of the card */
-.card__bottom {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 12px;
-}
-
-
-.card__details, .card__quotes {
-  flex: 1;
-  min-width: 0;
-  background: #e0e0e0;  /* or #d0d0d0 for quotes */
+.card__details,
+.card__quotes {
+  background: #e0e0e0; /* could be changed per theme */
   padding: 8px;
   border-radius: 4px;
 }
