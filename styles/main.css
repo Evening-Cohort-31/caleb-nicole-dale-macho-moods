@@ -1,4 +1,12 @@
 /* Loud 80s wrestling vibe: purple + gold + neon accents */
+/* Design tokens are reusable named values—like colors, fonts, spacing, and 
+shadows—that store a design choice in one place so it can be applied consistently 
+across all parts of a project. */
+/* The variables below are CSS custom properties ("design tokens").
+   - They store reusable values like colors, shadows, and border sizes.
+   - Using tokens means you can update the theme in one place and have the
+     change apply everywhere they're referenced (e.g., var(--mm-gold)).
+   - This helps keep styles consistent and makes future edits much easier. */
 :root {
   --mm-bg: radial-gradient(1200px 600px at 10% -10%, #4b0082 0%, #2b0f3f 45%, #160a22 100%);
   --mm-surface: #2a2140;
@@ -64,14 +72,6 @@ body {
   pointer-events: none;
 }
 
-.card h2 {
-  font-family: "Bangers", Impact, Haettenschweiler, "Anton", sans-serif;
-  color: #fff;
-  font-size: 1.5rem;
-  letter-spacing: 0.5px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.45);
-}
-
 /* Image frame */
 .card img {
   border: 3px solid rgba(255,255,255,0.12);
@@ -90,17 +90,36 @@ body {
 /* Zebra/tiger stripe label for “Macho Advice” */
 .card__advice-label {
   font-family: "Bangers", Impact, Haettenschweiler, "Anton", sans-serif;
-  font-size: 0.95rem;
+  font-size: 2rem;
+  font-weight: 500;
   text-transform: uppercase;
-  color: #1b0e2b;
-  background:
-    repeating-linear-gradient(
-      135deg,
-      var(--mm-gold) 0 10px,
-      #000 10px 16px
-    );
+  letter-spacing: 1px;
+  text-align: center;
+
+  /* High-contrast text */
+  color: #ffffff;
+  -webkit-text-stroke: 1.2px #000; /* thick black outline */
+  text-shadow:
+  1px 1px 0 rgba(255,255,255,0.4),
+  -1px -1px 0 rgba(0,0,0,0.6),
+  0 0 8px rgba(255,255,255,0.25);
+
+  /* Angled hazard tape */
+  background: repeating-linear-gradient(
+    150deg, /* tilt */
+    var(--mm-gold) 0 12px,
+    #000 12px 20px
+  );
+
+  padding: 6px 12px;
+  border-radius: 999px; /* pill shape */
   border: 2px solid #000;
-  box-shadow: 0 3px 0 #000, 0 8px 14px rgba(0,0,0,0.35);
+
+  /* Lift effect */
+  box-shadow: 0 3px 0 #000, 0 6px 12px rgba(0,0,0,0.3);
+
+  display: block;
+  width: 100%;
 }
 
 /* Quotes */
@@ -141,12 +160,6 @@ body {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.card h2 {
-  margin: 0;
-  font-size: 1.2rem;
-  text-align: center;
-}
-
 .card img {
   width: 100%;
   height: auto;
@@ -158,4 +171,34 @@ body {
   background: #e0e0e0; /* could be changed per theme */
   padding: 8px;
   border-radius: 4px;
+}
+
+/* card heading styling */
+.card__title {
+  font-family: "Bangers", Impact, Haettenschweiler, "Anton", sans-serif;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--mm-gold);
+  text-align: center;
+  padding: 6px 10px;
+
+  /* Make it stand out from the image behind */
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 8px;
+
+  /* Wrestling belt style outline */
+  border: 2px solid var(--mm-gold);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.5),
+    0 0 10px rgba(255, 213, 74, 0.6);
+
+  /* Text outline for extra contrast */
+  -webkit-text-stroke: 1px #000;
+}
+
+/* Optional: slight hover effect if you want some flair */
+.card__title:hover {
+  transform: scale(1.05);
+  background: rgba(0, 0, 0, 0.75);
 }
